@@ -1,0 +1,19 @@
+{
+    "name": "jithran/git-ribbon",
+    "description": "A ribbon for laravel projects that gives information about the current git status of the project",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Jithran\\GitRibbon\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Jithran",
+            "email": "info@jithransikken.nl"
+        }
+    ],
+    "require-dev": {
+        "orchestra/testbench": "^8.5"
+    }
+}
