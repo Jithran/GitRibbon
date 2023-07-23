@@ -7,12 +7,20 @@
             "Jithran\\GitRibbon\\": "src/"
         }
     },
+    "autoload-dev": {
+        "psr-4": {
+            "Jithran\\GitRibbon\\Tests\\": "tests/"
+        }
+    },
     "authors": [
         {
             "name": "Jithran",
             "email": "info@jithransikken.nl"
         }
     ],
+    "require": {
+        "php": "^8.0"
+    },
     "require-dev": {
         "orchestra/testbench": "^8.5"
     }
