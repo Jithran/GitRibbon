@@ -2,12 +2,16 @@
 
 namespace Jithran\GitRibbon\Tests\Feature;
 
-use Orchestra\Testbench\TestCase;
+use Jithran\GitRibbon\Tests\TestCase;
 
 class InitialTest extends TestCase
 {
-    public function testInitial()
+    /**
+     * Test the environment config.
+     * @return void
+     */
+    public function testEnvDefault()
     {
-        $this->assertTrue(true);
+        $this->assertTrue(config('git-ribbon.environment') === ['local']);
     }
 }
