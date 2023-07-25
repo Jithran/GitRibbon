@@ -2,10 +2,21 @@
 
 namespace Jithran\GitRibbon;
 
+use Illuminate\Contracts\Http\Kernel;
 use Illuminate\Support\ServiceProvider;
 
 class GitRibbonServiceProvider extends ServiceProvider
 {
+    /**
+     * Register the application services.
+     * @return void
+     */
+    public function register(): void
+    {
+        $this->mergeConfigFrom(__DIR__ . '/../config/git-ribbon.php', 'git-ribbon');
+    }
+
+
     /**
      * Bootstrap the application services.
      * @return void
@@ -15,14 +26,20 @@ class GitRibbonServiceProvider extends ServiceProvider
         $this->publishes([
             __DIR__ . '/../config/git-ribbon.php' => config_path('git-ribbon.php'),
         ], 'config');
+
+        $this->registerMiddleware(\Jithran\GitRibbon\Middleware\GitRibbon::class);
     }
 
+
+
     /**
-     * Register the application services.
-     * @return void
+     * Register Middleware
+     *
+     * @param string $middleware
      */
-    public function register(): void
+    protected function registerMiddleware(string $middleware): void
     {
-        $this->mergeConfigFrom(__DIR__ . '/../config/git-ribbon.php', 'git-ribbon');
+        $kernel = $this->app[Kernel::class];
+        $kernel->pushMiddleware($middleware);
     }
 }

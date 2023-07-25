@@ -23,5 +23,16 @@
     },
     "require-dev": {
         "orchestra/testbench": "^8.5"
+    },
+    "version": "1.0.0",
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Jithran\\GitRibbon\\GitRibbonServiceProvider"
+            ],
+            "aliases": {
+                "GitRibbon": "Jithran\\GitRibbon\\Facades\\GitRibbon"
+            }
+        }
     }
 }

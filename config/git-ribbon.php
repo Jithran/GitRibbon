@@ -2,8 +2,15 @@
 
 return [
     /*
-     * The environment to use for the ribbon.
-     * Corresponds to the environment in the config file.
+     |--------------------------------------------------------------------------
+     | Git Ribbon Settings
+     |--------------------------------------------------------------------------
+     |
+     | Git ribbon is enabled by default, but you can disable it by setting
+     | You can also set the environments where the ribbon should be shown.
+     | The default environment is 'local'.
+     |
      */
-    'environment' => ['local'],
+    'enabled' => env('GIT_RIBBON_ENABLED', true),
+    'environment' => ['local', 'testing'],
 ];
