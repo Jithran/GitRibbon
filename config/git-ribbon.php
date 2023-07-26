@@ -13,4 +13,28 @@ return [
      */
     'enabled' => env('GIT_RIBBON_ENABLED', true),
     'environment' => ['local', 'testing'],
+
+    /*
+     |--------------------------------------------------------------------------
+     | Git Ribbon Presets
+     |--------------------------------------------------------------------------
+     |
+     | Set the presets for the ribbon data.
+     |
+     */
+
+    'presets' => [
+        'no-changes' => [
+            'label' => 'UpToDate',
+            'bgColor' => '#00aa00',
+        ],
+        'changed' => [
+            'label' => 'Changed',
+            'bgColor' => '#aa0000',
+        ],
+        'error' => [
+            'label' => 'Untracked',
+            'bgColor' => '#aa0000',
+        ],
+    ]
 ];

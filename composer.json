@@ -29,10 +29,7 @@
         "laravel": {
             "providers": [
                 "Jithran\\GitRibbon\\GitRibbonServiceProvider"
-            ],
-            "aliases": {
-                "GitRibbon": "Jithran\\GitRibbon\\Facades\\GitRibbon"
-            }
+            ]
         }
     }
 }
