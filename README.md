@@ -12,8 +12,9 @@
 </p>
 
 <p align="center">
+<a href="https://packagist.org/packages/jithran/git-ribbon"><img src="https://img.shields.io/packagist/v/jithran/git-ribbon.svg?style=flat-square" alt="Packagist"></a>
 <img src="https://img.shields.io/badge/License-MIT-brightgreen.svg?style=flat-square" alt="License">
-<img src="https://img.shields.io/badge/PHP-8.x-brightgreen.svg?style=flat-square" alt="PHP Version">
+<a href="https://packagist.org/packages/jithran/git-ribbon"><img src="https://img.shields.io/packagist/php-v/jithran/git-ribbon.svg?style=flat-square" alt="PHP from Packagist"></a>
 <img src="https://img.shields.io/badge/Laravel-10.x-brightgreen.svg?style=flat-square" alt="Laravel Version">
 </p>
 
