@@ -62,9 +62,10 @@ class GitRibbonService
                 $popover = '<div class="grp-title">Changed Files</div>';
                 $popover .= '<ul style="margin: 0;padding: 0;list-style: none;">';
                 foreach ($files as $file) {
-                    $popover .= '<li>';
-                    $popover .= '<span class="fa fa-' . $file['status'] . '" aria-hidden="true"></span> ';
-                    $popover .= $file['file'];
+                    $popover .= '<li style="color: '.$file['color'].'">';
+                    $popover .= '<span class="fa fa-' . $file['icon'] . '" aria-hidden="true"></span> ';
+                    $popover .= '<span class="grp-dirname">'.$file['dirname'].'/</span>';
+                    $popover .= $file['filename'];
                     $popover .= '</li>';
                 }
                 $popover .= '</ul>';
