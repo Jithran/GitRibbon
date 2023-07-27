@@ -36,7 +36,7 @@ Git Ribbon is a Laravel package that creates a ribbon on the top of the page whi
 To install the package via composer, Run:
 
 ```bash
-composer require jithran/git-ribbon
+composer require jithran/git-ribbon --dev
 ```
 
 The package will automatically register itself.
