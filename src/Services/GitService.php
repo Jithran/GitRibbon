@@ -6,7 +6,8 @@ use Illuminate\Contracts\Process\ProcessResult;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Process;
 
-class GitService {
+class GitService
+{
     public function getBranchName(): ?string
     {
         $branchName = $this->_getCommandResult('rev-parse --abbrev-ref HEAD');
@@ -25,7 +26,7 @@ class GitService {
         $version = $this->_getCommandResult('--version');
 
         preg_match('/\d+\.\d+\.\d+/', $version, $matches);
-        if(count($matches) > 0) {
+        if (count($matches) > 0) {
             return $matches[0];
         }
 
@@ -46,16 +47,21 @@ class GitService {
         $files = explode("\n", $files);
 
         $output = [];
-        foreach($files as $file) {
+        foreach ($files as $file) {
+            $fileClean = trim(substr($file, 2));
+            $dirname = dirname($fileClean);
+            $basename = basename($fileClean);
 
             $output[] = [
-                'status' => $this->_processFileStatus($file),
-                'file' => substr($file, 3)
-            ];
+                    'path' => $fileClean,
+                    'filename' => $basename,
+                    'dirname' => $dirname,
+                ] + $this->_processFileStatus($file);
+
         }
 
-        return collect($output)->sortBy(function($item) {
-            return match ($item['status']) {
+        return collect($output)->sortBy(function ($item) {
+            return match ($item['icon']) {
                 'plus' => 1,
                 'pencil' => 2,
                 'trash' => 3,
@@ -73,7 +79,7 @@ class GitService {
     {
         // if the command does not start with 'git ', add it
         if (!str_starts_with($command, 'git ')) {
-            $command = 'git '. $command;
+            $command = 'git ' . $command;
         }
 
         // prepend the base path
@@ -81,7 +87,7 @@ class GitService {
 
         $process = Process::run($command);
 
-        if($returnObject) {
+        if ($returnObject) {
             return $process;
         }
 
@@ -98,29 +104,29 @@ class GitService {
         $str = str_replace(["\r", "\n"], '', $str);
     }
 
-    private function _processFileStatus(string $file): string
+    private function _processFileStatus(string $file): array
     {
         $statusIndexTree = substr($file, 0, 1);
         $statusWorkingTree = substr($file, 1, 1);
 
         return match ($statusWorkingTree) {
-            'A' => "plus",
-            'D' => "trash",
-            'M' => "pencil",
-            '?' => "ellipsis-h",
-            '!' => "exclamation-triangle",
-            'R' => "redo",
-            'C' => "copy",
+            'A' => ['icon' => "plus", 'color' => "#22863a"],
+            'D' => ['icon' => "trash", 'color' => "#a63800"],
+            'M' => ['icon' => "pencil", 'color' => "#223aa6"],
+            '?' => ['icon' => "ellipsis-h", 'color' => "#666666"],
+            '!' => ['icon' => "exclamation-triangle", 'color' => "#a63800"],
+            'R' => ['icon' => "redo", 'color' => "#223aa6"],
+            'C' => ['icon' => "copy", 'color' => "#223aa6"],
             ' ' =>
-                match ($statusIndexTree) {
-                    'A' => "plus",
-                    'D' => "trash",
-                    'M' => "pencil",
-                    'R' => "redo",
-                    'C' => "copy",
-                    default => "question",
-                },
-            default => 'question',
+            match ($statusIndexTree) {
+                'A' => ['icon' => "plus", 'color' => "#22863a"],
+                'D' => ['icon' => "trash", 'color' => "#a63800"],
+                'M' => ['icon' => "pencil", 'color' => "#223aa6"],
+                'R' => ['icon' => "redo", 'color' => "#223aa6"],
+                'C' => ['icon' => "copy", 'color' => "#223aa6"],
+                default => ['icon' => "question", 'color' => "#666666"],
+            },
+            default => ['icon' => "question", 'color' => "#666666"],
         };
 
     }

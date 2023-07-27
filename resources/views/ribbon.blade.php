@@ -120,4 +120,8 @@ $git = new GitService();
     .grp-value {
         flex: 1;
     }
+
+    .grp-dirname {
+        color: gray;
+    }
 </style>
