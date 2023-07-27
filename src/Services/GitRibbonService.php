@@ -30,15 +30,13 @@ class GitRibbonService
 
     public function isEnabled(): bool
     {
+        // disable if app debug is disabled
+        if (!$this->app['config']->get('app.debug')) {
+            $this->enabled = false;
+        }
+
         if ($this->enabled === null) {
-            $config = $this->app['config'];
-            $configEnabled = value(config('git-ribbon.enabled'));
-
-            if ($configEnabled === null) {
-                $configEnabled = $config->get('app.debug');
-            }
-
-            $this->enabled = $configEnabled && in_array($this->app->environment(), config('git-ribbon.environment'));
+            $this->enabled = value(config('git-ribbon.enabled')) && in_array($this->app->environment(), config('git-ribbon.environment'));
         }
         return $this->enabled;
     }
