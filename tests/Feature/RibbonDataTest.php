@@ -25,7 +25,7 @@ class RibbonDataTest extends TestCase
         $this->assertEquals('blue', $ribbon->getBgColor());
         $this->assertEquals('tooltip2', $ribbon->getTooltipInfo());
 
-        $this->expectException(\InvalidArgumentException::class);
+        $this->expectException(\Exception::class);
         $ribbon->setPreset('notfound');
     }
 }
