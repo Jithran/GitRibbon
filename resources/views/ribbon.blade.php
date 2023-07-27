@@ -14,7 +14,7 @@ $git = new GitService();
 <div class="git-ribbon-popover">
     <div class="grp-container">
         <div class="grp-container-info">
-            <h2 class="grp-title">Project information</h2>
+            <div class="grp-title">Project information</div>
             <div class="grp-table">
                 <div class="grp-row">
                     <div class="grp-cell grp-label">Git Branch:</div>
@@ -76,6 +76,7 @@ $git = new GitService();
     .grp-title {
         font-size: 1.3em;
         margin-bottom: 5px;
+        text-decoration: underline;
     }
 
 

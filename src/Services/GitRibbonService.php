@@ -59,7 +59,7 @@ class GitRibbonService
                 $files = $this->gitService->getChangedFiles();
 
                 // display the files that have been changed in a popover
-                $popover = '<h2 class="grp-title">Changed Files</h2>';
+                $popover = '<div class="grp-title">Changed Files</div>';
                 $popover .= '<ul style="margin: 0;padding: 0;list-style: none;">';
                 foreach ($files as $file) {
                     $popover .= '<li>';
