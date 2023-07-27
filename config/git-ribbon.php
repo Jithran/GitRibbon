@@ -12,7 +12,7 @@ return [
      |
      */
     'enabled' => env('GIT_RIBBON_ENABLED', true),
-    'environment' => ['local', 'testing'],
+    'environment' => ['local', 'testing', 'development', 'dev'],
 
     /*
      |--------------------------------------------------------------------------
