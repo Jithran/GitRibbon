@@ -23,7 +23,7 @@ Git Ribbon is a Laravel package that creates a ribbon on the top of the page whi
 ## Features
 
 - Displays if a project is up-to-date or not in a ribbon
-- Provides git information in a tooltip
+- Provides git & environment information in a tooltip
 - Easy to install and use
 
 ## Requirements
@@ -48,8 +48,6 @@ php artisan vendor:publish --provider="Jithran\GitRibbon\GitRibbonServiceProvide
 ``` 
 
 By default, the ribbon is only displayed in the `local`, `dev` or `development` environments (APP_ENV). You can change this in the config file by expanding the git-ribbon.environment array.
-
-```php 
 
 ## License
 
