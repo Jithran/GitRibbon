@@ -68,6 +68,7 @@ $git = new GitService();
         width: auto;
         padding: 10px;
         background-color: #fff;
+        color: #1a202c;
         border: 1px solid #ccc;
         border-bottom-left-radius: 2px;
         box-shadow: 0 0 2px #ccc;
