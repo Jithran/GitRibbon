@@ -2,6 +2,7 @@
 
 namespace Jithran\GitRibbon\Middleware;
 
+use Illuminate\Http\Response;
 use Jithran\GitRibbon\Services\GitRibbonService;
 
 class GitRibbon
@@ -18,19 +19,20 @@ class GitRibbon
 
     public function handle($request, \Closure $next)
     {
-        if($this->gitRibbonService->isEnabled() === false) {
+        if ($this->gitRibbonService->isEnabled() === false) {
             return $next($request);
         }
 
         $ribbonHtml = $this->gitRibbonService->renderRibbon();
 
         $response = $next($request);
-        $content = $response->getContent();
-        $content = str_replace('</body>', $ribbonHtml . '</body>', $content);
-        $response->setContent($content);
+
+        if ($response instanceof Response) {
+            $content = $response->getContent();
+            $content = str_replace('</body>', $ribbonHtml . '</body>', $content);
+            $response->setContent($content);
+        }
 
         return $response;
     }
-
-
 }

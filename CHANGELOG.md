@@ -7,6 +7,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Fixed
+- Before we insert the ribbon to the body, check if the response is a html response object to prevent errors.
+
 ## [1.0.3] - 2023-08-03
 
 ### Added
